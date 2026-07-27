@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage_order</fullName>
+    <active>true</active>
+    <errorConditionFormula>CASE(TEXT(Stage__c),
+  &quot;Applied&quot;, 1,
+  &quot;Screening&quot;, 2,
+  &quot;Interview&quot;, 3,
+  &quot;Offer&quot;, 4,
+  &quot;Hired&quot;, 5,
+  0)
+-
+CASE(TEXT(PRIORVALUE(Stage__c)),
+  &quot;Applied&quot;, 1,
+  &quot;Screening&quot;, 2,
+  &quot;Interview&quot;, 3,
+  &quot;Offer&quot;, 4,
+  &quot;Hired&quot;, 5,
+  0)
+&gt; 1</errorConditionFormula>
+    <errorMessage>&quot;Applications must move through the pipeline one stage at a time. You can&apos;t skip stages.&quot;</errorMessage>
+</ValidationRule>
