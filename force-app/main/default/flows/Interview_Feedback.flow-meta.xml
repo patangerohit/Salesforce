@@ -27,7 +27,7 @@
             <assignToReference>Stage</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Reject</stringValue>
+                <stringValue>Rejected</stringValue>
             </value>
         </assignmentItems>
         <connector>
@@ -238,7 +238,7 @@
             <targetReference>Capture_Feedback</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>

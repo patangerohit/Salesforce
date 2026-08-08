@@ -3,21 +3,21 @@
     <apiVersion>67.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Stamp_Offer_Extended_Date</name>
-        <label>Stamp Offer Extended Date</label>
+        <name>Stamp_Stage_Last_Changed</name>
+        <label>Stamp Stage Last Changed</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>$Record.Offer_Extended_Date__c</assignToReference>
+            <assignToReference>$Record.Stage_Last_Changed__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Flow.CurrentDate</elementReference>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
             </value>
         </assignmentItems>
     </assignments>
     <environments>Default</environments>
-    <interviewLabel>Application: Before Save - Offer Stamping {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Application: Before Save Offer Stamping</label>
+    <interviewLabel>Application: Stage Timestamp {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Application: Stage Timestamp</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -41,15 +41,14 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Stamp_Offer_Extended_Date</targetReference>
+            <targetReference>Stamp_Stage_Last_Changed</targetReference>
         </connector>
-        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Stage__c</field>
-            <operator>EqualTo</operator>
+            <operator>IsChanged</operator>
             <value>
-                <stringValue>Offer</stringValue>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Application__c</object>
