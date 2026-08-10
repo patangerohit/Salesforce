@@ -15,7 +15,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Update_Application_Record</targetReference>
+            <targetReference>Review_and_Commit</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -31,7 +31,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Update_Application_Record</targetReference>
+            <targetReference>Review_and_Commit</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -218,6 +218,33 @@
         <fields>
             <name>Message</name>
             <fieldText>&lt;p&gt;&quot;Feedback and scores have been saved successfully!&quot;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Review_and_Commit</name>
+        <label>Review and Commit</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Application_Record</targetReference>
+        </connector>
+        <fields>
+            <name>Review</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Review Your Submission&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Score:&lt;/strong&gt; {!Score} / 10 &lt;/p&gt;&lt;p&gt;&lt;strong&gt;Recommendation:&lt;/strong&gt; {!Recommendation}&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Notes:&lt;/strong&gt; {!Notes}&lt;/p&gt;&lt;p&gt;&lt;em&gt;By clicking Commit below, this application will be moved to the&lt;/em&gt;&lt;strong&gt;&lt;em&gt; {!Stage}&lt;/em&gt;&lt;/strong&gt;&lt;em&gt; stage.&lt;/em&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
