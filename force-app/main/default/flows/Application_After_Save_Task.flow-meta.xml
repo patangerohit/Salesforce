@@ -125,11 +125,27 @@
         <object>Task</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
-    <start>
+    <recordUpdates>
+        <name>Update_Priority_Field</name>
+        <label>Update Priority Field</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Result</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Priority__c</field>
+            <value>
+                <elementReference>Get_Application_Priority.Output_Priority</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Application_Priority</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>or</filterLogic>
@@ -152,4 +168,21 @@
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>Get_Application_Priority</name>
+        <label>Get Application Priority</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Priority_Field</targetReference>
+        </connector>
+        <flowName>Calculate_Application_Priority</flowName>
+        <inputAssignments>
+            <name>Input_Application</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
 </Flow>
