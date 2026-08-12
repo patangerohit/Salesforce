@@ -111,6 +111,9 @@
         <connector>
             <targetReference>Confirmation_Screen</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Error_Screen</targetReference>
+        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -218,6 +221,30 @@
         <fields>
             <name>Message</name>
             <fieldText>&lt;p&gt;&quot;Feedback and scores have been saved successfully!&quot;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Screen</name>
+        <label>Error Screen</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error_Message</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;This update couldn&apos;t be saved.&lt;/strong&gt; It may be trying to skip a pipeline stage. &lt;/p&gt;&lt;p&gt;Details:{!$Flow.FaultMessage}.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

@@ -70,6 +70,32 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Log_Bulk_Update_Error</name>
+        <label>Log Bulk Update Error</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Flow_Name__c</field>
+            <value>
+                <stringValue>&quot;Stale Application Flagger&quot;</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record_ID__c</field>
+            <value>
+                <stringValue>Bulk Collection Update</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Stale_Applications</name>
         <label>Get Stale Applications</label>
@@ -103,6 +129,9 @@
         <label>Update Records</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>Log_Bulk_Update_Error</targetReference>
+        </faultConnector>
         <inputReference>ApplicationsToUpdate</inputReference>
     </recordUpdates>
     <start>

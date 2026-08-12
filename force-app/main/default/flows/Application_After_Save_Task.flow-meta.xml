@@ -50,10 +50,39 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
+        <name>Copy_1_of_Log_Task_Creation_Error2</name>
+        <label>Copy 1 of Log Task Creation Error2</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Flow_Name__c</field>
+            <value>
+                <stringValue>&quot;Application: After Save - Offer Task&quot;</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record_ID__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
         <name>Create_Offer_Task</name>
         <label>Create Offer Task</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>Copy_1_of_Log_Task_Creation_Error2</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>ActivityDate</field>
             <value>
@@ -92,6 +121,9 @@
         <label>Create Rejection Task</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>Log_Task_Creation_Error1</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>ActivityDate</field>
             <value>
@@ -123,6 +155,32 @@
             </value>
         </inputAssignments>
         <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Log_Task_Creation_Error1</name>
+        <label>Log Task Creation Error1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Flow_Name__c</field>
+            <value>
+                <stringValue>&quot;Application: After Save - Rejection Task&quot;</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record_ID__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordUpdates>
