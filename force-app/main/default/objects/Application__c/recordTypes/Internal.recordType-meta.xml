@@ -5,6 +5,25 @@
     <description>Internal Record Type</description>
     <label>Internal</label>
     <picklistValues>
+        <picklist>Offer_Approval_Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Submitted</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Pending Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Stage__c</picklist>
         <values>
             <fullName>Applied</fullName>
