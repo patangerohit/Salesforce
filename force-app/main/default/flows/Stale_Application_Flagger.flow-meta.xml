@@ -42,7 +42,7 @@
         <label>Loop 1</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <collectionReference>ApplicationsToUpdate</collectionReference>
+        <collectionReference>Get_Stale_Applications</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Set_Is_Stale_to_True</targetReference>
@@ -144,8 +144,8 @@
             <dayOfMonthToRun>0</dayOfMonthToRun>
             <frequency>Daily</frequency>
             <frequencyNumber>0</frequencyNumber>
-            <startDate>2026-08-09</startDate>
-            <startTime>16:10:00.000Z</startTime>
+            <startDate>2026-08-21</startDate>
+            <startTime>23:20:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
