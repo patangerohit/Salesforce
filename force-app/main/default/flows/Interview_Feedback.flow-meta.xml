@@ -103,6 +103,32 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Log_the_error</name>
+        <label>Log the error</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Flow_Name__c</field>
+            <value>
+                <stringValue>&quot;Interview Feedback&quot;</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record_ID__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordUpdates>
         <name>Update_Application_Record</name>
         <label>Update Application Record</label>
@@ -242,6 +268,9 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Log_the_error</targetReference>
+        </connector>
         <fields>
             <name>Error_Message</name>
             <fieldText>&lt;p&gt;&lt;strong&gt;This update couldn&apos;t be saved.&lt;/strong&gt; It may be trying to skip a pipeline stage. &lt;/p&gt;&lt;p&gt;Details:{!$Flow.FaultMessage}.&lt;/p&gt;</fieldText>
