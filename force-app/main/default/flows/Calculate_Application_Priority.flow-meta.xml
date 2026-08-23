@@ -57,7 +57,14 @@
                 <leftValueReference>Input_Application.Stage__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Interview</stringValue>
+                    <stringValue>Offer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Input_Application.Is_Stale__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -69,10 +76,10 @@
             <name>Medium</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Input_Application.Is_Stale__c</leftValueReference>
+                <leftValueReference>Input_Application.Stage__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Offer</stringValue>
                 </rightValue>
             </conditions>
             <connector>
