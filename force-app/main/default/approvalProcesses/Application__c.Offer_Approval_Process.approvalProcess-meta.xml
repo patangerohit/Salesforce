@@ -35,9 +35,17 @@
             <name>Approval_Action</name>
             <type>FieldUpdate</type>
         </action>
+        <action>
+            <name>Hired</name>
+            <type>FieldUpdate</type>
+        </action>
     </finalApprovalActions>
     <finalApprovalRecordLock>false</finalApprovalRecordLock>
     <finalRejectionActions>
+        <action>
+            <name>Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
         <action>
             <name>Rejection_Action</name>
             <type>FieldUpdate</type>
