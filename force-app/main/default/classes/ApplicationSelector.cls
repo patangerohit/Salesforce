@@ -42,4 +42,30 @@ public with sharing class ApplicationSelector {
             AND CreatedDate < :cutoffDate
         ];
     }
+    
+    // Computes total Applications sitting in each stage using the database engine
+    public static Map<String, Integer> getPipelineCountsByStage() {
+    Map<String, Integer> counts = new Map<String, Integer>();
+    for (AggregateResult ar : [
+        SELECT Stage__c stage, COUNT(Id) total
+        FROM Application__c
+        GROUP BY Stage__c
+    ]) {
+        counts.put((String) ar.get('stage'), (Integer) ar.get('total'));
+    }
+    return counts;
+}
+    
+    // Dynamically searches Applications applying filters only if provided
+    public static List<Application__c> searchApplications(String stageFilter, String sourceFilter) {
+    String q = 'SELECT Id, Stage__c, Applicant__r.Source__c FROM Application__c WHERE Id != null';
+    if (String.isNotBlank(stageFilter)) {
+        q += ' AND Stage__c = :stageFilter';        // bind, not concatenate
+    }
+    if (String.isNotBlank(sourceFilter)) {
+        q += ' AND Applicant__r.Source__c = :sourceFilter';
+    }
+    q += ' LIMIT 200';
+    return Database.query(q);
+}
 }
