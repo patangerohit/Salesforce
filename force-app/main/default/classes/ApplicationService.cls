@@ -50,4 +50,23 @@ public static TransitionResult bulkTransitionStage(List<Application__c> apps, St
         
         return res;
     }
+    
+    // Handles logic when an Application transitions into the Offer stage
+    public static void handleMovedToOffer(List<Application__c> applications) {
+        List<Task> followUpTasks = new List<Task>();
+        
+        for (Application__c app : applications) {
+            followUpTasks.add(new Task(
+                WhatId = app.Id,
+                Subject = 'Send Offer Letter to Candidate',
+                Priority = 'High',
+                Status = 'Not Started'
+            ));
+        }
+        
+        if (!followUpTasks.isEmpty()) {
+            // Bulk insert all tasks in a single DML statement
+            insert followUpTasks;
+        }
+    }
 }
