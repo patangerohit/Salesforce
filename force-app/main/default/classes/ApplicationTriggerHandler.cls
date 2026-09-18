@@ -22,7 +22,12 @@ public with sharing class ApplicationTriggerHandler {
                if (a.Stage__c == 'Rejected' && oldA.Stage__c != 'Rejected') movedToRejected.add(a);
            }
            // explicit order: handles each, delegating to bulk-safe service methods
-           if (!movedToOffer.isEmpty())    ApplicationService.handleMovedToOffer(movedToOffer);
+           if (!movedToOffer.isEmpty()){    
+               ApplicationService.handleMovedToOffer(movedToOffer);
+               Set<Id> ids = new Map<Id, Application__c>(movedToOffer).keySet();
+               ApplicationAsyncService.processOfferFollowUp(ids);
+                                       }
+           
            if (!movedToRejected.isEmpty()) ApplicationService.handleMovedToRejected(movedToRejected);
        }
    }
