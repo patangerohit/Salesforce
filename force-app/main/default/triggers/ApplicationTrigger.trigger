@@ -19,7 +19,7 @@ trigger ApplicationTrigger on Application__c (before insert, before update, afte
         
         // Delegate to the service layer if any records meet the criteria
         if (!movedToOffer.isEmpty()) {
-            ApplicationService.handleMovedToOffer(movedToOffer);
+            System.enqueueJob(new OfferFollowUpQueueable(movedToOffer));
         }
     }
 }
